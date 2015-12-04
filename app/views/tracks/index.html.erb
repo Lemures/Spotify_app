@@ -1,8 +1,16 @@
+<%= "User signed-in? #{@user_signed_in}" %>
+
 <div class="container margin-top-20">
 	<div class="pull-right">
-		<a href="#" class="btn btn-info">Login to Spotify</a>
-		<a href="#" class="btn btn-warning">View Saved Tracks</a>
-	</div>
+    <% if !@user_signed_in %>
+		<a href="<%=auth_spotify_path%>" class="btn btn-info">Login to Spotify</a>
+    <% end %>
+
+    <% if @user_signed_in %>
+        <a href="<%= "/?code=#{session[:spotify_access_token]}&viewSaved=true" %>" class="btn btn-warning">View Saved Tracks</a>
+    <% end %>
+
+  </div>
 
 	<div class="clearfix"></div>
 	<!--Search Form-->

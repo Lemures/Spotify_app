@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  #root 'tracks#index'
+  root 'tracks#index'
 
   resources :tracks
+
+  get 'auth/spotify' => 'authentications#create'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
